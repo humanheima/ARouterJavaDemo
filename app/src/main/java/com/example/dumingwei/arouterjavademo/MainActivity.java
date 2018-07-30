@@ -69,10 +69,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_jump_vir_url:
+                TestParcelable parcelable = new TestParcelable("jack", 666);
                 Uri testUriMix = Uri.parse("arouter://dumingwei.example.com/app/url_jump_activity");
                 ARouter.getInstance().build(testUriMix)
                         .withString("name", "dumingwei")
                         .withInt("age", 27)
+                        .withParcelable("parcelable", parcelable)
                         .navigation();
                 break;
             case R.id.btn_intercept_test:
@@ -111,6 +113,15 @@ public class MainActivity extends AppCompatActivity {
                         .withObject("objList", objList)
                         .withObject("map", map)
                         .navigation();
+                break;
+            case R.id.btn_nav_to_java_module:
+                //注意要在build里面依赖 implementation project(':java-module')
+                Log.d(TAG, "onClick: btn_nav_to_java_module");
+                ARouter.getInstance()
+                        .build("/javamodule/javamodule_activity")
+                        .navigation();
+                break;
+            case R.id.btn_nav_to_kotlin_module:
                 break;
             default:
                 break;
