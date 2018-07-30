@@ -122,6 +122,15 @@ public class MainActivity extends AppCompatActivity {
                         .navigation();
                 break;
             case R.id.btn_nav_to_kotlin_module:
+                ARouter.getInstance()
+                        .build("/kotlin/kotlin_activity")
+                        .navigation();
+                break;
+            case R.id.btn_test_degrade:
+                //navigation(方法里面一定要传递一个context)
+                ARouter.getInstance()
+                        .build("/app/app_activity")
+                        .navigation(this);
                 break;
             default:
                 break;
