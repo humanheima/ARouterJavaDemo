@@ -12,6 +12,10 @@ import com.example.dumingwei.arouterjavademo.R;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Created by p_dmweidu on 2023/2/9
+ * Desc: 复杂参数解析
+ */
 @Route(path = "/app/injection_activity")
 public class InjectionActivity extends AppCompatActivity {
 
@@ -58,6 +62,7 @@ public class InjectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //注意，不加这一行的话，应该不会自动解析数据，需要手动解析。
         ARouter.getInstance().inject(this);
         setContentView(R.layout.activity_injection);
         String params = String.format(

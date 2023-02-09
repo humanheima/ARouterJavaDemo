@@ -38,3 +38,8 @@ public class ThirdActivity extends AppCompatActivity {
 ARouter.getInstance().build("/app/second_activity").navigation(this, 666);
 
 ```
+
+
+### 踩过的坑
+
+* [升级 compiler sdk 导致 [No module name, for more information, look at gradle log.] #475](https://github.com/alibaba/ARouter/issues/475)

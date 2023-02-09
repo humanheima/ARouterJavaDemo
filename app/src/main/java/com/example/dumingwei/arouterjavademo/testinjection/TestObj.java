@@ -15,4 +15,12 @@ public class TestObj {
         this.name = name;
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "TestObj{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

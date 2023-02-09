@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 /**
  * 创建一个监视 schame事件的activity，然后直接把url传递给ARouter
  * 在AndroidManifest.xml文件中注册
+ * 这个就类似于 TypeContext 吧。
  */
 public class SchemeFilterActivity extends Activity {
 

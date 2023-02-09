@@ -41,4 +41,12 @@ public class TestParcelable implements Parcelable {
             return new TestParcelable[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "TestParcelable{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

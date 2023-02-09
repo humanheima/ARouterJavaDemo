@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.dmw.basic_service_lib.interfaces.ServiceRegister;
 import com.example.dumingwei.arouterjavademo.testinjection.TestObj;
 import com.example.dumingwei.arouterjavademo.testinjection.TestParcelable;
 
@@ -38,12 +39,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         activity = this;
+        ServiceRegister.getInstance().helloService1.sayHello("hello 1");
+        ServiceRegister.getInstance().helloService2.sayHello("hello 2");
+        ServiceRegister.getInstance().helloService3.sayHello("hello 3");
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_simple_jump:
-                ARouter.getInstance().build("/app/second_activity").navigation();
+                ARouter.getInstance()
+                        .build("/app/second_activity")
+                        .navigation();
                 break;
             case R.id.btn_simple_jump_with_params:
                 ARouter.getInstance()
@@ -81,6 +87,17 @@ public class MainActivity extends AppCompatActivity {
                 ARouter.getInstance()
                         .build("/app/second_activity")
                         .navigation(this, new NavCallback() {
+
+                            @Override
+                            public void onFound(Postcard postcard) {
+                                super.onFound(postcard);
+                            }
+
+                            @Override
+                            public void onLost(Postcard postcard) {
+                                super.onLost(postcard);
+                            }
+
                             @Override
                             public void onArrival(Postcard postcard) {
 
