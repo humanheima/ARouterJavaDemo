@@ -39,13 +39,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         activity = this;
-        ServiceRegister.getInstance().helloService1.sayHello("hello 1");
-        ServiceRegister.getInstance().helloService2.sayHello("hello 2");
-        ServiceRegister.getInstance().helloService3.sayHello("hello 3");
+        invokeOtherComponentService();
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.btn_test_interface_impl:
+                invokeOtherComponentService();
+                break;
             case R.id.btn_simple_jump:
                 ARouter.getInstance()
                         .build("/app/second_activity")
@@ -162,5 +163,14 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == 100) {
             Log.d(TAG, "onActivityResult: " + resultCode);
         }
+    }
+
+    /**
+     * 测试调用其他组件中的接口
+     */
+    private void invokeOtherComponentService() {
+        ServiceRegister.getInstance().helloService1.sayHello("hello 1");
+        ServiceRegister.getInstance().helloService2.sayHello("hello 2");
+        ServiceRegister.getInstance().helloService3.sayHello("hello 3");
     }
 }
