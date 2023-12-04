@@ -4,22 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dmw.basic_service_lib.interfaces.ServiceRegister;
 import com.example.dumingwei.arouterjavademo.testinjection.TestObj;
 import com.example.dumingwei.arouterjavademo.testinjection.TestParcelable;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,7 +58,13 @@ public class MainActivity extends AppCompatActivity {
                         .navigation();
                 break;
             case R.id.btn_simple_jump_for_result:
-                ARouter.getInstance().build("/app/second_activity").navigation(this, 666);
+                ARouter.getInstance().build("/app/second_activity").navigation(this, 666, new NavCallback() {
+                    @Override
+                    public void onArrival(Postcard postcard) {
+                        Toast.makeText(MainActivity.this, "跳转完了", Toast.LENGTH_SHORT).show();
+                    }
+
+                });
                 break;
             case R.id.btn_find_fragment:
                 Fragment fragment = (Fragment) ARouter.getInstance().build("/app/fragment/blank_fragment").navigation();
@@ -161,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == 100) {
+            Toast.makeText(activity, "onActivityResult resultCode = " + resultCode, Toast.LENGTH_SHORT).show();
             Log.d(TAG, "onActivityResult: " + resultCode);
         }
     }

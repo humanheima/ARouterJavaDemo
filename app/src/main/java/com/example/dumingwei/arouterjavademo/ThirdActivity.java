@@ -1,9 +1,8 @@
 package com.example.dumingwei.arouterjavademo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -24,7 +23,7 @@ public class ThirdActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //inject
+        //inject，配合   @Autowired 使用，自动解析参数
         ARouter.getInstance().inject(this);
         setContentView(R.layout.activity_third);
         Log.d(TAG, "onCreate: key0=" + key0 + ",key1=" + key1);

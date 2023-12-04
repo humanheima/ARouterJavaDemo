@@ -24,6 +24,7 @@ public class ServiceRegister {
     public static ServiceRegister INSTANCE;
 
     private ServiceRegister() {
+
         Log.i(TAG, "ServiceRegister: ");
         helloService1= (HelloService) ARouter.getInstance().build("/jav_amodule/helloOne").navigation();
         helloService2= (HelloService) ARouter.getInstance().build("/kotlin_module/helloTwo").navigation();

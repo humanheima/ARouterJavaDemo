@@ -39,6 +39,9 @@ ARouter.getInstance().build("/app/second_activity").navigation(this, 666);
 
 ```
 
+### 如何去掉 There's no route found! 错误提示
+
+
 
 ### 踩过的坑
 
